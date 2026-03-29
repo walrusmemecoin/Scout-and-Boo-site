@@ -4,201 +4,600 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scout & Boo</title>
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --blue:#163c8c;
+      --blue2:#274fa8;
+      --gold:#e6c15a;
+      --shadow:0 18px 55px rgba(15,23,42,0.10);
+      --radius:24px;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #111;
-      text-align: center;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(39,79,168,0.08), transparent 35%),
+        linear-gradient(180deg, #f8fbff 0%, #f3f6fb 100%);
+      color:var(--text);
+      line-height:1.5;
     }
 
-    .logo {
-      width: 160px;
-      margin: 20px auto;
-      border-radius: 20px;
+    .wrap{
+      width:100%;
+      max-width:1160px;
+      margin:0 auto;
+      padding:24px 18px 60px;
     }
 
-    .banner {
-      width: 100%;
-      border-radius: 20px;
-      margin-bottom: 20px;
+    .hero-shell{
+      background:var(--card);
+      border:1px solid rgba(22,60,140,0.08);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      margin-bottom:28px;
     }
 
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,0.9);
     }
 
-    h2 {
-      font-size: 1.5rem;
-      color: #555;
-      margin-bottom: 20px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
     }
 
-    .subtext {
-      max-width: 700px;
-      margin: auto;
-      margin-bottom: 30px;
-      color: #444;
+    .brand img{
+      width:62px;
+      height:62px;
+      object-fit:cover;
+      border-radius:18px;
+      border:1px solid rgba(0,0,0,0.08);
+      box-shadow:0 8px 24px rgba(15,23,42,0.12);
+      background:#fff;
     }
 
-    .buttons {
-      margin-bottom: 40px;
+    .brand-text{
+      text-align:left;
     }
 
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
+    .eyebrow{
+      font-size:0.78rem;
+      font-weight:700;
+      letter-spacing:0.14em;
+      color:var(--blue2);
+      text-transform:uppercase;
+      margin-bottom:2px;
     }
 
-    .primary {
-      background: black;
-      color: white;
+    .brand-text h1{
+      font-size:1.35rem;
+      line-height:1.1;
+      font-weight:900;
+      margin-bottom:4px;
     }
 
-    .secondary {
-      border: 2px solid black;
-      color: black;
+    .brand-text p{
+      color:var(--muted);
+      font-size:0.95rem;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .section {
-      margin: 30px 0;
-      padding: 20px;
-      border: 1px solid #eee;
-      border-radius: 16px;
+    .nav a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      font-size:0.95rem;
     }
 
-    .token-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+    .nav .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 18px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
     }
 
-    .card {
-      border: 1px solid #eee;
-      border-radius: 14px;
-      padding: 15px;
+    .nav .primary{
+      background:linear-gradient(180deg, var(--blue2), var(--blue));
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 10px 28px rgba(39,79,168,0.24);
     }
 
-    .label {
-      font-size: 0.85rem;
-      color: #777;
+    .hero{
+      padding:26px;
     }
 
-    .value {
-      font-weight: bold;
-      margin-top: 5px;
+    .hero-banner{
+      width:100%;
+      display:block;
+      border-radius:26px;
+      box-shadow:0 18px 50px rgba(15,23,42,0.16);
+      margin-bottom:28px;
+      border:1px solid rgba(0,0,0,0.05);
     }
 
-    .roadmap {
-      text-align: left;
-      max-width: 700px;
-      margin: auto;
+    .hero-content{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:24px;
+      align-items:start;
     }
 
-    .step {
-      margin: 10px 0;
-      padding: 12px;
-      border-left: 4px solid black;
-      background: #fafafa;
+    .left{
+      text-align:left;
     }
 
-    .footer {
-      margin-top: 40px;
-      color: #777;
-      font-size: 0.9rem;
+    .headline{
+      font-size:3.2rem;
+      line-height:0.95;
+      font-weight:900;
+      letter-spacing:-0.03em;
+      margin-bottom:14px;
+      color:#0b1834;
+    }
+
+    .headline span{
+      color:var(--blue2);
+      display:block;
+    }
+
+    .sub{
+      font-size:1.05rem;
+      color:var(--muted);
+      max-width:700px;
+      margin-bottom:22px;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      font-size:0.98rem;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-main{
+      background:linear-gradient(180deg, var(--blue2), var(--blue));
+      color:#fff;
+      box-shadow:0 12px 30px rgba(39,79,168,0.25);
+    }
+
+    .btn-light{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .micro{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color:var(--muted);
+      font-size:0.92rem;
+      font-weight:700;
+    }
+
+    .micro span{
+      background:#f8fafc;
+      border:1px solid var(--line);
+      padding:10px 14px;
+      border-radius:999px;
+    }
+
+    .right{
+      display:grid;
+      gap:14px;
+    }
+
+    .info-card{
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 12px 30px rgba(15,23,42,0.06);
+      text-align:left;
+    }
+
+    .info-title{
+      font-size:0.82rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--blue2);
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .info-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .info-item small{
+      display:block;
+      color:var(--muted);
+      margin-bottom:4px;
+      font-size:0.8rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
+
+    .info-item strong{
+      font-size:1rem;
+      line-height:1.25;
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-bottom:22px;
+    }
+
+    .section{
+      background:var(--card);
+      border:1px solid rgba(22,60,140,0.08);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .section h2{
+      font-size:1.55rem;
+      margin-bottom:10px;
+      color:#0b1834;
+    }
+
+    .section p{
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .steps{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .step{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:#fcfdff;
+    }
+
+    .step-num{
+      flex:0 0 38px;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:linear-gradient(180deg, var(--blue2), var(--blue));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+    }
+
+    .step strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:1rem;
+      color:var(--text);
+    }
+
+    .step p{
+      margin:0;
+      font-size:0.95rem;
+    }
+
+    .wide{
+      background:var(--card);
+      border:1px solid rgba(22,60,140,0.08);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .wide h2{
+      font-size:1.65rem;
+      margin-bottom:16px;
+      color:#0b1834;
+    }
+
+    .roadmap{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .road{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      background:linear-gradient(180deg, #fff, #fbfdff);
+    }
+
+    .road .tag{
+      display:inline-block;
+      background:#eef4ff;
+      color:var(--blue2);
+      font-weight:800;
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:0.8rem;
+      margin-bottom:12px;
+    }
+
+    .road h3{
+      margin-bottom:8px;
+      font-size:1.1rem;
+    }
+
+    .road p{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.92rem;
+      padding:24px 10px 0;
+    }
+
+    @media (max-width: 980px){
+      .hero-content,
+      .section-grid,
+      .roadmap{
+        grid-template-columns:1fr;
+      }
+
+      .headline{
+        font-size:2.45rem;
+      }
+    }
+
+    @media (max-width: 720px){
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav{
+        width:100%;
+        justify-content:flex-start;
+      }
+
+      .hero{
+        padding:18px;
+      }
+
+      .section,
+      .wide{
+        padding:22px 18px;
+      }
+
+      .headline{
+        font-size:2rem;
+      }
+
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .cta-row{
+        flex-direction:column;
+      }
+
+      .brand-text h1{
+        font-size:1.15rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
+  <div class="wrap">
 
-    <img src="IMG_9156.jpeg" class="logo" />
-    <img src="83FD561B-DA68-4668-BD05-5E113EBE5C4F.png" class="banner" />
-
-    <h1>SCOUT & BOO</h1>
-    <h2>Biden's Dogs on Solana</h2>
-
-    <p class="subtext">
-      A clean, simple meme coin built for attention. Strong branding,
-      recognizable concept, and designed for momentum on launch.
-    </p>
-
-    <div class="buttons">
-      <a href="#" class="btn primary">🚀 Buy on Pump.fun</a>
-
-      <a href="https://x.com/i/communities/2038128819245285413" target="_blank" class="btn secondary">
-        🐦 Join X Community
-      </a>
-
-      <a href="#" class="btn secondary">💬 Telegram</a>
-    </div>
-
-    <div class="section">
-      <h3>About</h3>
-      <p>
-        Scout & Boo is a meme coin inspired by Biden’s dogs.
-        Built for simplicity, attention, and viral potential.
-      </p>
-    </div>
-
-    <div class="section">
-      <h3>Token Info</h3>
-      <div class="token-grid">
-        <div class="card">
-          <div class="label">Name</div>
-          <div class="value">Scout & Boo</div>
+    <div class="hero-shell">
+      <div class="topbar">
+        <div class="brand">
+          <img src="IMG_9156.jpeg" alt="Scout & Boo coin image" />
+          <div class="brand-text">
+            <div class="eyebrow">Solana Meme Coin</div>
+            <h1>Scout &amp; Boo</h1>
+            <p>Biden’s Dogs community page</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="label">Chain</div>
-          <div class="value">Solana</div>
+
+        <div class="nav">
+          <a href="#about" class="pill">About</a>
+          <a href="#buy" class="pill">How to Buy</a>
+          <a href="#roadmap" class="pill">Roadmap</a>
+          <a href="https://x.com/i/communities/2038128819245285413" target="_blank" class="pill primary">Join X Community</a>
         </div>
-        <div class="card">
-          <div class="label">Launch</div>
-          <div class="value">Pump.fun</div>
-        </div>
-        <div class="card">
-          <div class="label">Supply</div>
-          <div class="value">1,000,000,000</div>
+      </div>
+
+      <div class="hero">
+        <img src="83FD561B-DA68-4668-BD05-5E113EBE5C4F.png" alt="Scout and Boo banner" class="hero-banner" />
+
+        <div class="hero-content">
+          <div class="left">
+            <div class="headline">
+              BIDEN’S DOGS
+              <span>SCOUT &amp; BOO</span>
+            </div>
+
+            <p class="sub">
+              A cleaner, more polished Solana meme coin landing page built around Scout and Boo with a more legitimate project-style layout, brighter sections, and a stronger first impression.
+            </p>
+
+            <div class="cta-row">
+              <a href="#" class="btn btn-main">Buy on Pump.fun</a>
+              <a href="https://x.com/i/communities/2038128819245285413" target="_blank" class="btn btn-light">Join X Community</a>
+              <a href="#" class="btn btn-light">Telegram</a>
+            </div>
+
+            <div class="micro">
+              <span>Solana Network</span>
+              <span>Community Driven</span>
+              <span>Launch Ready</span>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="info-card">
+              <div class="info-title">Token Snapshot</div>
+              <div class="info-grid">
+                <div class="info-item">
+                  <small>Name</small>
+                  <strong>Scout &amp; Boo</strong>
+                </div>
+                <div class="info-item">
+                  <small>Ticker</small>
+                  <strong>$SCOUTBOO</strong>
+                </div>
+                <div class="info-item">
+                  <small>Chain</small>
+                  <strong>Solana</strong>
+                </div>
+                <div class="info-item">
+                  <small>Launch</small>
+                  <strong>Pump.fun</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-title">Project Positioning</div>
+              <p>
+                Designed to feel more like a clean project page instead of a rough meme template, with white content panels, sharper spacing, and a more premium presentation.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="section">
-      <h3>Roadmap</h3>
+    <div class="section-grid">
+      <section class="section" id="about">
+        <h2>About the Project</h2>
+        <p>
+          Scout &amp; Boo is a meme coin concept centered around a recognizable cultural image with a simple patriotic theme, strong visuals, and a cleaner brand presentation. This version is built to look more legitimate, more polished, and easier to share.
+        </p>
+      </section>
+
+      <section class="section" id="buy">
+        <h2>How to Buy</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <strong>Set up a wallet</strong>
+              <p>Use a Solana wallet such as Phantom.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <strong>Add SOL</strong>
+              <p>Fund your wallet with enough SOL for the purchase and fees.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <strong>Buy on Pump.fun</strong>
+              <p>Open the official launch page and swap SOL for Scout &amp; Boo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="wide" id="roadmap">
+      <h2>Roadmap</h2>
       <div class="roadmap">
-        <div class="step">Phase 1 — Launch + Community Build</div>
-        <div class="step">Phase 2 — Volume + Trending</div>
-        <div class="step">Phase 3 — Listings + Growth</div>
+        <div class="road">
+          <div class="tag">Phase 1</div>
+          <h3>Brand &amp; Launch Setup</h3>
+          <p>Finalize the page, artwork, socials, and launch presentation.</p>
+        </div>
+        <div class="road">
+          <div class="tag">Phase 2</div>
+          <h3>Community Growth</h3>
+          <p>Push awareness through memes, posts, and community participation.</p>
+        </div>
+        <div class="road">
+          <div class="tag">Phase 3</div>
+          <h3>Momentum &amp; Expansion</h3>
+          <p>Build visibility, strengthen branding, and improve reach after launch.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
     <div class="footer">
-      Not affiliated with any government entity. Meme coin only.
+      © 2026 Scout &amp; Boo. Meme coin / community project page.
     </div>
 
   </div>
