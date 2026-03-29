@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scout & Boo</title>
 
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #0a1535, #132d73);
-      color: white;
+      background: #ffffff;
+      color: #111;
       text-align: center;
     }
 
@@ -22,50 +27,109 @@
 
     .logo {
       width: 160px;
+      margin: 20px auto;
       border-radius: 20px;
-      margin-top: 20px;
     }
 
     .banner {
       width: 100%;
       border-radius: 20px;
-      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     h1 {
       font-size: 2.8rem;
-      margin-top: 20px;
+      font-weight: 900;
     }
 
     h2 {
-      color: gold;
+      font-size: 1.5rem;
+      color: #555;
       margin-bottom: 20px;
+    }
+
+    .subtext {
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .buttons {
+      margin-bottom: 40px;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 20px;
-      margin: 8px;
+      margin: 10px;
+      padding: 14px 24px;
       border-radius: 999px;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.2s;
     }
 
-    .buy {
-      background: gold;
-      color: black;
-    }
-
-    .social {
-      background: rgba(255,255,255,0.1);
+    .primary {
+      background: black;
       color: white;
     }
 
+    .secondary {
+      border: 2px solid black;
+      color: black;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
     .section {
-      background: rgba(255,255,255,0.08);
-      margin: 20px 0;
+      margin: 30px 0;
       padding: 20px;
+      border: 1px solid #eee;
       border-radius: 16px;
+    }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 15px;
+    }
+
+    .label {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    .value {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .roadmap {
+      text-align: left;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .step {
+      margin: 10px 0;
+      padding: 12px;
+      border-left: 4px solid black;
+      background: #fafafa;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -73,46 +137,69 @@
 <body>
   <div class="container">
 
-    <!-- LOGO (NO CHANGE NEEDED) -->
-    <img src="IMG_9156.jpeg" class="logo">
+    <img src="IMG_9156.jpeg" class="logo" />
+    <img src="83FD561B-DA68-4668-BD05-5E113EBE5C4F.png" class="banner" />
 
-    <!-- BANNER (NO CHANGE NEEDED) -->
-    <img src="83FD561B-DA68-4668-BD05-5E113EBE5C4F.png" class="banner">
+    <h1>SCOUT & BOO</h1>
+    <h2>Biden's Dogs on Solana</h2>
 
-    <h1>BIDEN'S DOGS</h1>
-    <h2>SCOUT & BOO</h2>
-
-    <p>
-      A Solana meme coin built for community, memes, and momentum.
+    <p class="subtext">
+      A clean, simple meme coin built for attention. Strong branding,
+      recognizable concept, and designed for momentum on launch.
     </p>
 
-    <a href="#" class="btn buy">Buy on Pump.fun</a>
-    <a href="#" class="btn social">Telegram</a>
-    <a href="#" class="btn social">X (Twitter)</a>
+    <div class="buttons">
+      <a href="#" class="btn primary">🚀 Buy on Pump.fun</a>
 
-    <div class="section">
-      <h3>Token Info</h3>
-      <p><strong>Name:</strong> Scout & Boo</p>
-      <p><strong>Ticker:</strong> $SCOUTBOO</p>
-      <p><strong>Network:</strong> Solana</p>
-      <p><strong>Launch:</strong> Pump.fun</p>
+      <a href="https://x.com/i/communities/2038128819245285413" target="_blank" class="btn secondary">
+        🐦 Join X Community
+      </a>
+
+      <a href="#" class="btn secondary">💬 Telegram</a>
     </div>
 
     <div class="section">
-      <h3>How to Buy</h3>
-      <p>1. Download Phantom Wallet</p>
-      <p>2. Add SOL</p>
-      <p>3. Buy on Pump.fun</p>
+      <h3>About</h3>
+      <p>
+        Scout & Boo is a meme coin inspired by Biden’s dogs.
+        Built for simplicity, attention, and viral potential.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Token Info</h3>
+      <div class="token-grid">
+        <div class="card">
+          <div class="label">Name</div>
+          <div class="value">Scout & Boo</div>
+        </div>
+        <div class="card">
+          <div class="label">Chain</div>
+          <div class="value">Solana</div>
+        </div>
+        <div class="card">
+          <div class="label">Launch</div>
+          <div class="value">Pump.fun</div>
+        </div>
+        <div class="card">
+          <div class="label">Supply</div>
+          <div class="value">1,000,000,000</div>
+        </div>
+      </div>
     </div>
 
     <div class="section">
       <h3>Roadmap</h3>
-      <p>Phase 1 – Launch</p>
-      <p>Phase 2 – Community Growth</p>
-      <p>Phase 3 – Expansion</p>
+      <div class="roadmap">
+        <div class="step">Phase 1 — Launch + Community Build</div>
+        <div class="step">Phase 2 — Volume + Trending</div>
+        <div class="step">Phase 3 — Listings + Growth</div>
+      </div>
     </div>
 
-    <p style="margin-top:30px;">© 2026 SCOUTBOO</p>
+    <div class="footer">
+      Not affiliated with any government entity. Meme coin only.
+    </div>
 
   </div>
 </body>
